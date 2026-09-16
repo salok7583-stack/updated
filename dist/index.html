@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Good Morning, Sakhi 🌸 | A Special Morning Surprise</title>
+  <meta name="description" content="A magical sunrise garden surprise website for Mehak featuring blooming flowers, Radhe Radhe devotional touches, and serene morning melody.">
+  
+  <!-- Favicon icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+
+  <!-- Google Fonts: Playfair Display, Cinzel, Great Vibes, Alex Brush, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" crossorigin href="/assets/index-DcRzUeHn.css">
+</head>
+<body>
+
+  <!-- ===================================================================
+       AMBIENT ATMOSPHERE & BACKGROUND CANVASES
+       =================================================================== -->
+  <div class="dreamy-backdrop" id="dreamy-backdrop"></div>
+  <div class="sun-rays" id="sun-rays"></div>
+  
+  <!-- Canvas for continuous floating rose petals and glowing fireflies -->
+  <canvas id="ambient-canvas"></canvas>
+  
+  <!-- Canvas for sparkle bursts and unlock explosion effects -->
+  <canvas id="sparkle-canvas"></canvas>
+
+  <!-- ===================================================================
+       1. OPENING / PASSWORD SCREEN
+       =================================================================== -->
+  <section id="lock-screen" aria-label="Secret Unlock Screen">
+    <div class="lock-card">
+      <div class="lock-icon-wrapper">
+        <div class="wreath"></div>
+        <span style="font-size: 2.2rem;">🌸</span>
+      </div>
+
+      <h1 class="lock-title">A Little Morning Surprise 🌸</h1>
+      <p class="lock-subtitle">Something special is waiting for you...</p>
+
+      <div class="lock-form">
+        <div class="input-container">
+          <input 
+            type="password" 
+            id="password-input" 
+            class="password-input" 
+            placeholder="Enter secret word..." 
+            autocomplete="off" 
+            aria-label="Secret Password Input"
+          />
+          <button type="button" id="toggle-password-btn" class="toggle-password-btn" title="Toggle visibility" aria-label="Toggle password view">
+            🔒
+          </button>
+        </div>
+
+        <button type="button" id="unlock-btn" class="unlock-btn" id="unlock-button">
+          <span>Unlock</span>
+          <span style="font-size: 1.15rem;">✨</span>
+        </button>
+
+        <div id="error-message" class="error-message" role="alert">
+          Hmm... that's not the magic word 😌🌸 Try again!
+        </div>
+      </div>
+
+      <div class="password-hint" id="password-hint">
+        <span>💡 Need a hint?</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       2. MAIN SURPRISE EXPERIENCE (Revealed after password is unlocked)
+       =================================================================== -->
+  <main id="main-experience">
+
+    <!-- Hero Header Greeting -->
+    <header class="hero-header">
+      <!-- Krishna Devotional Badge -->
+      <div class="devotional-pill" id="devotional-pill">
+        <svg class="feather-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 50,85 Q 47,55 50,15" stroke="#ca8a04" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="50" cy="30" rx="22" ry="28" fill="#0284c7"/>
+          <ellipse cx="50" cy="32" rx="16" ry="21" fill="#0d9488"/>
+          <ellipse cx="50" cy="34" rx="11" ry="14" fill="#16a34a"/>
+          <ellipse cx="50" cy="36" rx="7" ry="9" fill="#fde047"/>
+          <ellipse cx="50" cy="38" rx="4" ry="5" fill="#1e1b4b"/>
+        </svg>
+        <span>Shree Krishna Krupa • Divine Sunrise</span>
+      </div>
+
+      <h1 class="greeting-title">Good Morning, Sakhi.. 🌸</h1>
+      <div>
+        <span class="radhe-radhe-text">Radhe Radhe 🙏🏻✨</span>
+      </div>
+
+      <p class="greeting-message">
+       आपकी सुबह मुस्कान के साथ शुरू हो, आपका दिन खुशियों से खिले, और हर छोटा-सा पल आपके लिए कुछ खूबसूरत लेकर आए।🌷
+      </p>
+    </header>
+
+    <!-- ===================================================================
+         3. REALISTIC GROWING BOTANICAL GARDEN ANIMATION SECTION
+         =================================================================== -->
+    <section class="garden-stage-section" aria-label="Magical Blooming Garden">
+      <div class="garden-card-wrapper">
+        <div class="garden-header-bar">
+          <div class="garden-badge">
+            <span>🌿</span>
+            <span>Mehak's Living Sunrise Garden</span>
+          </div>
+          <div class="garden-controls">
+            <button type="button" id="shower-petals-btn" class="garden-btn" title="Shower Rose Petals">
+              <span>🌸 Petal Shower</span>
+            </button>
+            <button type="button" id="plant-surprise-btn" class="garden-btn" title="Plant New Flower">
+              <span>🌱 Plant a Flower</span>
+            </button>
+            <button type="button" id="replay-garden-btn" class="garden-btn" title="Re-bloom Garden">
+              <span>🔄 Re-Bloom</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="garden-canvas-container" id="garden-canvas-container" title="Click anywhere in the garden to plant fresh blooming flowers!">
+          <!-- Realistic Botanical Garden Canvas -->
+          <canvas id="garden-canvas"></canvas>
+          <div class="garden-tap-hint">✨ Tap anywhere in the garden to sprout new blossoms ✨</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. HER PHOTO SHOWCASE & KRISHNA BLESSING SECTION
+         =================================================================== -->
+    <section class="showcase-grid">
+      
+      <!-- Mehak's Photo Frame -->
+      <div class="photo-frame-wrapper">
+        <div class="photo-card" id="photo-card">
+          
+          <!-- Decorative Corner Flower Badges -->
+          <div class="corner-flower top-left">🌸</div>
+          <div class="corner-flower top-right">🌼</div>
+          <div class="corner-flower bottom-left">🌷</div>
+          <div class="corner-flower bottom-right">🌺</div>
+
+          <div class="photo-inner">
+            <!-- 
+              ===================================================================
+              PHOTO REPLACEMENT INSTRUCTION:
+              Replace "mehak.jpg" below with the actual photo file of Mehak.
+              Place the file "mehak.jpg" in the website folder.
+              ===================================================================
+            -->
+            <img 
+              src="/assets/mehak-olFOI86V.jpg" 
+              alt="Portrait of Mehak" 
+              id="main-photo-img" 
+              class="photo-img" 
+              referrerpolicy="no-referrer"
+              onerror="this.onerror=null; this.src='public/mehak.jpg';"
+            />
+          </div>
+
+          <div class="photo-caption">
+            <div class="photo-caption-title">Dearest Sakhi 🌸</div>
+            <div class="photo-caption-sub">वो सबसे प्यारी मुस्कान, जो पूरे दिन में खुशियों की रोशनी भर दे ✨</div>
+          </div>
+
+          <div class="photo-action-row">
+            <label for="local-photo-input" class="photo-upload-label" title="Change photo for preview">
+              <span>📷 Preview Custom Photo</span>
+              <input type="file" id="local-photo-input" accept="image/*" style="display: none;" />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Devotional Krishna / Radhe-Radhe Theme Card -->
+      <div class="krishna-card" id="krishna-card">
+        <div class="krishna-emblem-wrapper">
+          <!-- 
+            ===================================================================
+            KRISHNA IMAGE REPLACEMENT INSTRUCTION:
+            Replace "krishna.png" below with your custom Krishna / Kanhaji image.
+            Place "krishna.png" in the website folder.
+            ===================================================================
+          -->
+          <img 
+            src="/assets/krishna-YZSHOUTj.png" 
+            alt="Krishna Ji Devotional Motif" 
+            id="krishna-emblem-img"
+            class="krishna-emblem-img"
+            referrerpolicy="no-referrer"
+            onerror="this.onerror=null; this.src='public/krishna.png';"
+          />
+        </div>
+
+        <h3 class="krishna-card-title">Divine Morning Grace</h3>
+        <span class="krishna-card-sanskrit">राधे राधे</span>
+
+        <p class="krishna-verse">
+          “कान्हाजी की बाँसुरी की मधुर धुन आपके दिन को शांति, असीम आशीर्वाद और आपके हर कदम में सुकून से भर दे।” 🦚✨ 🪈✨
+        </p>
+
+        <div class="krishna-tags">
+          <span class="krishna-tag">🦚 Mor Pankh Peace</span>
+          <span class="krishna-tag">🪈 Bansuri Melody</span>
+          <span class="krishna-tag">☀️ Dawn Blessings</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===================================================================
+         5. INTERACTIVE MORNING WISHES & SURPRISE CARDS
+         =================================================================== -->
+    <section class="interactive-section">
+      <div class="section-heading-wrapper">
+        <span class="section-label">A Morning Note for You</span>
+        <h2 class="section-title">“आपकी वो छोटी-छोटी बातें, जो आपको इतना खूबसूरत और खास बनाती हैं।” 🌸 🌸</h2>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card 1: Sunshine Spirit -->
+        <article class="feature-card">
+          <div class="card-icon pink">☀️</div>
+          <h3 class="card-title">Radiant Sunshine</h3>
+          <p class="card-desc">
+            Your cheerful laughter and positive warmth make ordinary days feel special. Never stop sharing that sunshine!
+          </p>
+          <button type="button" class="card-action-btn" id="daily-bless-btn">
+            <span>✨ Daily Affirmation</span>
+          </button>
+        </article>
+
+        <!-- Card 2: Serene Grace -->
+        <article class="feature-card">
+          <div class="card-icon gold">🦚</div>
+          <h3 class="card-title">Peace &amp; Blessings</h3>
+          <p class="card-desc">
+            Surrounded by Krishna ji's loving protection. Wishing you calmness in your mind and triumph in all you do.
+          </p>
+          <button type="button" class="card-action-btn" onclick="document.getElementById('shower-petals-btn').click();">
+            <span>🌸 Send Petal Shower</span>
+          </button>
+        </article>
+
+        <!-- Card 3: Best Friend Bond -->
+        <article class="feature-card">
+          <div class="card-icon lavender">💗</div>
+          <h3 class="card-title">Always Grateful</h3>
+          <p class="card-desc">
+            True friends like you are a rare blessing. Thank you for simply being the genuine, lovely soul that you are.
+          </p>
+          <button type="button" class="card-action-btn" id="open-custom-modal">
+            <span>⚙️ Asset Settings Guide</span>
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6. FINAL SURPRISE SECTION
+         =================================================================== -->
+    <section class="final-surprise-section" aria-label="Final Message">
+      <div class="final-card" id="final-card">
+        <div class="final-heart-bubble">
+          <span>💗</span>
+        </div>
+
+        <h2 class="final-heading">One Last Thing... 💗</h2>
+
+        <p class="final-message">
+          No matter how busy life gets, I hope you always have reasons to smile. Stay happy, keep shining, and never forget how special you are. 🌸
+        </p>
+
+        <div>
+          <span class="final-devotional-signoff">Radhe Radhe Your Friend Abhishek ✨</span>
+        </div>
+
+        <div class="final-wreath-decor">
+          <span>🌸</span>
+          <span>✨</span>
+          <span>🌷</span>
+          <span>✨</span>
+          <span>🦚</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       7. SUBTLE FLOATING MUSIC PLAYER WIDGET
+       =================================================================== -->
+  <aside id="music-widget" aria-label="Background Music Controller">
+    <!-- 
+      ===================================================================
+      MUSIC REPLACEMENT INSTRUCTION:
+      Place your custom audio file named "morning.mp3" in this directory.
+      If no mp3 is found, the built-in Web Audio bansuri raga synthesizer
+      plays soothing acoustic morning melodies automatically!
+      ===================================================================
+    -->
+    <audio id="audio-player" src="/assets/morning-CtV2Kvaa.mp3" preload="auto" loop></audio>
+
+    <button type="button" id="music-toggle-btn" class="music-toggle-btn" title="Toggle Morning Music" aria-label="Play or pause music">
+      ▶
+    </button>
+
+    <div class="music-info">
+      <span class="music-title">Morning Serenade</span>
+      <span class="music-sub">Bansuri &amp; Harp Harmony</span>
+    </div>
+
+    <!-- Animated Equalizer Bars -->
+    <div class="sound-equalizer" id="sound-equalizer" aria-hidden="true">
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+      <div class="eq-bar"></div>
+    </div>
+  </aside>
+
+  <!-- ===================================================================
+       8. MODAL: MORNING BLESSING OF THE DAY
+       =================================================================== -->
+  <div class="modal-overlay" id="bless-modal" role="dialog" aria-modal="true" aria-labelledby="bless-modal-title">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" id="close-bless-modal" aria-label="Close modal">✕</button>
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <span style="font-size: 2.5rem;">🌸✨</span>
+        <h3 id="bless-modal-title" style="font-family: var(--font-display); font-size: 1.6rem; color: #831843; margin-top: 0.5rem;">Morning Wish for Mehak</h3>
+      </div>
+      <p id="bless-message" style="font-size: 1.08rem; line-height: 1.7; color: #4b5563; text-align: center; background: #fdf2f8; padding: 1.25rem; border-radius: 18px; border: 1px solid #fbcfe8;"></p>
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <button type="button" class="unlock-btn" onclick="document.getElementById('daily-bless-btn').click();" style="width: auto; margin: 0 auto; padding: 0.7rem 1.6rem; font-size: 0.95rem;">
+          <span>Another Blessing 🌷</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       9. MODAL: ASSET REPLACEMENT INSTRUCTIONS GUIDE
+       =================================================================== -->
+  <div class="modal-overlay" id="custom-modal" role="dialog" aria-modal="true" aria-labelledby="custom-modal-title">
+    <div class="modal-card">
+      <button type="button" class="modal-close-btn" id="close-custom-modal" aria-label="Close modal">✕</button>
+      <h3 id="custom-modal-title" style="font-family: var(--font-display); font-size: 1.45rem; color: #831843; margin-bottom: 0.75rem;">📁 Custom Asset Guide</h3>
+      <p style="font-size: 0.92rem; color: #4b5563; line-height: 1.6; margin-bottom: 1rem;">
+        You can replace the photo, song, and Krishna motif by saving your files with these exact names in the folder:
+      </p>
+
+      <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem; color: #374151;">
+        <li style="background: #faf8f5; padding: 0.75rem 1rem; border-radius: 12px; border: 1px solid #e5e7eb;">
+          <strong>📸 Her Photo:</strong> Save as <code style="background: #fce7f3; color: #be185d; padding: 0.15rem 0.4rem; border-radius: 6px;">mehak.jpg</code>
+        </li>
+        <li style="background: #faf8f5; padding: 0.75rem 1rem; border-radius: 12px; border: 1px solid #e5e7eb;">
+          <strong>🎵 Background Music:</strong> Save as <code style="background: #fef08a; color: #92400e; padding: 0.15rem 0.4rem; border-radius: 6px;">morning.mp3</code>
+        </li>
+        <li style="background: #faf8f5; padding: 0.75rem 1rem; border-radius: 12px; border: 1px solid #e5e7eb;">
+          <strong>🦚 Krishna Art:</strong> Save as <code style="background: #d1fae5; color: #065f46; padding: 0.15rem 0.4rem; border-radius: 6px;">krishna.png</code>
+        </li>
+      </ul>
+
+      <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #f3f4f6;">
+        <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 0.6rem;">Or test custom music live right now:</p>
+        <label for="local-audio-input" class="photo-upload-label" style="display: block; text-align: center; padding: 0.6rem;">
+          <span>🎵 Select MP3 File from your device</span>
+          <input type="file" id="local-audio-input" accept="audio/*" style="display: none;" />
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vanilla JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
